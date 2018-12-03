@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Fetch-AI</title>
+  <script>
+    (function () {
+      if (!process.env.HOT) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './dist/style.css';
+        
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+    }());
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    {
+      const script = document.createElement('script');
+      if (process.env.NODE_ENV === 'development') {
+        script.src = (process.env.HOT) ? 'http://localhost:' + process.env.PORT + '/dist/bundle.js' : './dist/bundle.js';
+      } else {
+        script.src = './dist/bundle.js';
+      }
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+
+</html>

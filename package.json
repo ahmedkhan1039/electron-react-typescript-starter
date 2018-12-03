@@ -1,0 +1,162 @@
+{
+  "name": "electron-react-starter",
+  "productName": "Electron React Starter",
+  "version": "1.0.0",
+  "description": "Simple Boilerplate of Electron App made using React + TypeScript",
+  "main": "main.js",
+  "scripts": {
+    "hot-server": "cross-env PORT=3000 NODE_ENV=development node --max_old_space_size=2096 server.js",
+    "start-hot": "cross-env PORT=3000 HOT=1 NODE_ENV=development electron ./app/main",
+    "dev": "npm run hot-server -- --start-hot",
+    "build-main": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --progress --profile --colors",
+    "build-renderer": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config ./config/webpack.config.production.js --progress --profile --colors",
+    "build": "npm run build-main && npm run build-renderer",
+    "start": "cross-env NODE_ENV=production electron ./app.html",
+    "package": "npm run build && build --publish never",
+    "package-win": "npm run build && build --win --x64",
+    "package-linux": "npm run build && build --linux",
+    "package-all": "npm run build && build -mwl",
+    "cleanup": "mop -v",
+    "postinstall": "npm run build",
+    "lint": "tslint '{src,test,mocks}/**/*.{ts,tsx}' --project ./tsconfig.json"
+  },
+  "lint-staged": {
+    "{src,test,mocks}/**/*.{js,ts,tsx,json,css,scss,md}": [
+      "prettier --config ./.prettierrc --write",
+      "git add"
+    ],
+    "{src,test,mocks}/**/*.{js,ts,tsx}": [
+      "tslint --project ./tsconfig.json --fix",
+      "git add"
+    ]
+  },
+  "build": {
+    "productName": "electron-react-starter",
+    "appId": "com.emumba.electron-react-starter",
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "files": [
+      "dist/",
+      "node_modules/",
+      "app.html",
+      "main.js",
+      "main.js.map",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    }
+  },
+  "bin": {
+    "electron": "./node_modules/.bin/electron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/emumba/fetch.ai/traffic_ui.git"
+  },
+  "author": {
+    "name": "Muhammad Ahmed",
+    "email": "ahmed.khan@emumba.com",
+    "url": "https://gitlab.com/ahmed.khan"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/emumba/fetch.ai/traffic_ui/issues"
+  },
+  "keywords": [
+    "electron",
+    "boilerplate",
+    "react",
+    "react-router",
+    "flux",
+    "webpack",
+    "react-hot"
+  ],
+  "homepage": "https://gitlab.com/emumba/fetch.ai/traffic_ui#readme",
+  "devDependencies": {
+    "@types/history": "^4.5.2",
+    "@types/node": "^8.0.2",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-hot-loader": "^3.0.4",
+    "@types/react-redux": "^5.0.4",
+    "@types/react-router": "^4.0.11",
+    "@types/react-router-dom": "^4.0.7",
+    "@types/react-router-redux": "^5.0.2",
+    "@types/redux-logger": "^3.0.0",
+    "asar": "^0.14.0",
+    "concurrently": "^3.1.0",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "css-modules-require-hook": "^4.0.6",
+    "devtron": "^1.4.0",
+    "electron": "^3.0.7",
+    "electron-builder": "^20.31.2",
+    "electron-builder-http": "^19.27.5",
+    "electron-devtools-installer": "^2.0.1",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "redux-logger": "^3.0.6",
+    "spectron": "^3.4.1",
+    "style-loader": "^0.19.0",
+    "ts-loader": "^3.1.0",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.3",
+    "url-loader": "^0.6.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-middleware": "^2.0.3",
+    "webpack-hot-middleware": "^2.13.2",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "electron-debug": "^1.1.0",
+    "history": "^4.6.1",
+    "react": "^16.0.0",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.0.0",
+    "react-google-maps": "^9.4.5",
+    "react-lightweight-tooltip": "^1.0.0",
+    "react-redux": "^5.0.1",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "source-map-support": "^0.5.0"
+  },
+  "devEngines": {
+    "node": ">=6.x",
+    "npm": ">=3.x"
+  }
+}
