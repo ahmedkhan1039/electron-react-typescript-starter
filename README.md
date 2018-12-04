@@ -5,12 +5,12 @@ A Simple Boiler plate to get started on making Electron Apps using React + TypeS
 
 ## Folder Structure
 
- - **app:** Here lies all you application logic. Here are two files main.js and index.tsx. Let me explain them one by one
-	 - **main.js:** Here lies the initialization of electron app. You will not have to change it unless you are changing some thing related specific to electron.
+ - **app:** Here lies all you application logic. Here lies index.tsx. Let me explain about it.
 	 - **index.tsx:** Here lies the root of the react app. From here the react start rendering the application.
  - **config:** Here lies all the web-pack configurations. There are separate for electron and react bundling.
  - **resource:** All pictures must be placed in this folder.
  - **server.js:** It is only used when we are executing in dev mode. Its purpose is hot reloading of modules.
+ - **main.js:** Here lies the initialization of electron app. You will not have to change it unless you are changing some thing related specific to electron.
   
 
 ## Prerequisite

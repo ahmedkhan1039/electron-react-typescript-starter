@@ -78,8 +78,8 @@ module.exports = merge(baseConfig, {
     }),
     new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
-      filename: '../app.html',
-      template: 'app/app.html',
+      filename: '../dist/app.html',
+      template: 'app.html',
       inject: false
     })
   ],

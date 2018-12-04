@@ -4,10 +4,10 @@ const baseConfig = require('./webpack.config.base');
 
 module.exports = merge(baseConfig, {
   devtool: 'source-map',
-  entry: ['./app/main'],
+  entry: ['./main'],
   output: {
     path: process.cwd(),
-    filename: 'main.js'
+    filename: 'dist/main.js'
   },
 
   plugins: [
